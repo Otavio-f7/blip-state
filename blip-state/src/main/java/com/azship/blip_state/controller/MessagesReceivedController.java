@@ -2,13 +2,12 @@ package com.azship.blip_state.controller;
 
 import com.azship.blip_state.domain.Message;
 import com.azship.blip_state.services.MessagesReceivedService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Key;
-import java.util.Map;
-
 @RestController
+@Slf4j
 @RequestMapping("/messages-received")
 public class MessagesReceivedController {
 
@@ -18,6 +17,12 @@ public class MessagesReceivedController {
 
     @PostMapping
     public String messagesReceived(@RequestBody Message body){
-        return messagesReceivedService.messagesReceived(body.getText().getMessage());
+        try{
+        messagesReceivedService.addMessagesReceived(body);
+        return "Adcionada";
+        } catch (Exception e){
+            log.error("Erro ao adicionar na lista: ", e);
+            return "Erro";
+        }
     }
 }

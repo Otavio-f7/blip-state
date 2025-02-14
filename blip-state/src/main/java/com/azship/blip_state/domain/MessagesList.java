@@ -24,4 +24,8 @@ public class MessagesList {
         }
         return false;
     }
+
+    public void clenMessages(){
+        mensagesList.clear();
+    }
 }
