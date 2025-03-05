@@ -17,5 +17,6 @@ public class DiscordApiService {
         DiscordMessageRequest messageRequest = new DiscordMessageRequest("Alerta, Blip com mau funcionamento!");
         DiscordMessageResponse response = discordApiClient.sendMessage(messageRequest);
         return  response;
+
     }
 }

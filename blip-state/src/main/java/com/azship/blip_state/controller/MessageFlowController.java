@@ -32,12 +32,13 @@ public class MessageFlowController {
 
     @Scheduled(fixedRate = 60000)
     public void scheduledMessage() {
+        log.info("Messagens: {}", messagesReceivedService.getList().toString());
         if (messagesReceivedService.validMessage()){
             messagesReceivedService.cleanMessagesList();
         } else {
             messagesReceivedService.cleanMessagesList();
             //discordApiService.sendMessage();
-            log.info("Messagens: {}", messagesReceivedService.toString());
+
             log.info("String não encontrada, chamaria a api");
 
         }
@@ -49,7 +50,6 @@ public class MessageFlowController {
         } catch (Exception e) {
             log.error("Erro ao chamar a API:", e);
         }
-
 
 
     }
