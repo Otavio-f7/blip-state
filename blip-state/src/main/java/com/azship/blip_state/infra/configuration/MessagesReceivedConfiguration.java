@@ -1,10 +1,9 @@
-package com.azship.blip_state.configuration;
+package com.azship.blip_state.infra.configuration;
 
-import com.azship.blip_state.domain.MessagesList;
+import com.azship.blip_state.domain.model.MessagesList;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 

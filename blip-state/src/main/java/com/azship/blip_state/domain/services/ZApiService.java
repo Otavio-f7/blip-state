@@ -1,15 +1,10 @@
-package com.azship.blip_state.services;
+package com.azship.blip_state.domain.services;
 
-import com.azship.blip_state.client.ZApiClient;
-import com.azship.blip_state.client.dto.MockResponse;
-import com.azship.blip_state.client.dto.SendMessageRequest;
-import com.azship.blip_state.client.dto.SendMessageResponse;
+import com.azship.blip_state.api.output.zapi.ZApiClient;
+import com.azship.blip_state.api.dto.MockResponse;
+import com.azship.blip_state.api.dto.SendMessageRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

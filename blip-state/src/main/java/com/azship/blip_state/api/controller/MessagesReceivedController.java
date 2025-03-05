@@ -1,7 +1,8 @@
-package com.azship.blip_state.controller;
+package com.azship.blip_state.api.controller;
 
-import com.azship.blip_state.domain.Message;
-import com.azship.blip_state.services.MessagesReceivedService;
+import com.azship.blip_state.domain.exception.ErrorSendMessage;
+import com.azship.blip_state.domain.model.Message;
+import com.azship.blip_state.domain.services.MessagesReceivedService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,12 +18,8 @@ public class MessagesReceivedController {
 
     @PostMapping
     public String messagesReceived(@RequestBody Message body){
-        try{
         messagesReceivedService.addMessagesReceived(body);
         return "Adcionada";
-        } catch (Exception e){
-            log.error("Erro ao adicionar na lista: ", e);
-            return "Erro";
-        }
+
     }
 }

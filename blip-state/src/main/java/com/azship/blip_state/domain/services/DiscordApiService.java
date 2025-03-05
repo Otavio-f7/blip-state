@@ -1,9 +1,8 @@
-package com.azship.blip_state.services;
+package com.azship.blip_state.domain.services;
 
-import com.azship.blip_state.client.DiscordApiClient;
-import com.azship.blip_state.client.dto.DiscordMessageRequest;
-import com.azship.blip_state.client.dto.DiscordMessageResponse;
-import com.azship.blip_state.client.dto.MockResponse;
+import com.azship.blip_state.api.output.discord.DiscordApiClient;
+import com.azship.blip_state.api.dto.DiscordMessageRequest;
+import com.azship.blip_state.api.dto.DiscordMessageResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

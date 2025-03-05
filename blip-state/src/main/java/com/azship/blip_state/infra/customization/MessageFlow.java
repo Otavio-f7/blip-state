@@ -1,9 +1,10 @@
-package com.azship.blip_state.controller;
+package com.azship.blip_state.infra.customization;
 
-import com.azship.blip_state.client.dto.MockResponse;
-import com.azship.blip_state.services.DiscordApiService;
-import com.azship.blip_state.services.MessagesReceivedService;
-import com.azship.blip_state.services.ZApiService;
+import com.azship.blip_state.api.dto.MockResponse;
+import com.azship.blip_state.domain.exception.ErrorSendMessage;
+import com.azship.blip_state.domain.services.DiscordApiService;
+import com.azship.blip_state.domain.services.MessagesReceivedService;
+import com.azship.blip_state.domain.services.ZApiService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ import java.time.format.DateTimeFormatter;
 @EnableScheduling
 @RequiredArgsConstructor
 @Slf4j
-public class MessageFlowController {
+public class MessageFlow {
 
     @Autowired
     private ZApiService zApiService;
@@ -32,23 +33,19 @@ public class MessageFlowController {
 
     @Scheduled(fixedRate = 60000)
     public void scheduledMessage() {
-        log.info("Messagens: {}", messagesReceivedService.getList().toString());
         if (messagesReceivedService.validMessage()){
             messagesReceivedService.cleanMessagesList();
         } else {
             messagesReceivedService.cleanMessagesList();
             //discordApiService.sendMessage();
 
-            log.info("String não encontrada, chamaria a api");
-
         }
         try {
             LocalDateTime now = LocalDateTime.now();
             String formatedNow = now.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
             MockResponse response = zApiService.sendMessage(formatedNow);
-            log.info("Resposta da API: {}", response.anyKey());
         } catch (Exception e) {
-            log.error("Erro ao chamar a API:", e);
+            throw new ErrorSendMessage("Error send message");
         }
 
 

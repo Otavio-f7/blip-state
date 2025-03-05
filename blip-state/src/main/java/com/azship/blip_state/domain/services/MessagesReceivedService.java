@@ -1,7 +1,8 @@
-package com.azship.blip_state.services;
+package com.azship.blip_state.domain.services;
 
-import com.azship.blip_state.domain.Message;
-import com.azship.blip_state.domain.MessagesList;
+import com.azship.blip_state.domain.exception.ErrorSendMessage;
+import com.azship.blip_state.domain.model.Message;
+import com.azship.blip_state.domain.model.MessagesList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -18,9 +19,12 @@ public class MessagesReceivedService {
 
 
     public void addMessagesReceived(Message message){
-
-        if (message.getPhone().equals(validPhone)){
-            messagesList.addMensagem(message.getText().getMessage());
+        try {
+            if (message.getPhone().equals(validPhone)) {
+                messagesList.addMensagem(message.getText().getMessage());
+            }
+        } catch (Exception e) {
+            throw new ErrorSendMessage("Error send message");
         }
     }
 
@@ -36,8 +40,4 @@ public class MessagesReceivedService {
         messagesList.clenMessages();
     }
 
-    public List getList(){
-        List list = messagesList.getMensagesList();
-        return list;
-    }
 }

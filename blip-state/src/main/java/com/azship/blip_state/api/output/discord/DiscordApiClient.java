@@ -1,8 +1,7 @@
-package com.azship.blip_state.client;
+package com.azship.blip_state.api.output.discord;
 
-import com.azship.blip_state.client.dto.DiscordMessageRequest;
-import com.azship.blip_state.client.dto.DiscordMessageResponse;
-import feign.Headers;
+import com.azship.blip_state.api.dto.DiscordMessageRequest;
+import com.azship.blip_state.api.dto.DiscordMessageResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

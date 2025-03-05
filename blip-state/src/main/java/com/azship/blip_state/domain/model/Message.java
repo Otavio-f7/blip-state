@@ -1,4 +1,4 @@
-package com.azship.blip_state.domain;
+package com.azship.blip_state.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
