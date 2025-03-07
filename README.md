@@ -1,4 +1,5 @@
-![process](https://github.com/user-attachments/assets/785fd7d2-9eb4-4ceb-a0e8-c02633284bea)
+![image](https://github.com/user-attachments/assets/5bae4049-800a-4a1e-94d7-d927c9ba0637)
+
 ## About this Project
 
 This project aims to validate the functioning of opening tickets to the support team.
